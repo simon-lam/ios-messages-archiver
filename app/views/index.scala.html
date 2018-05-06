@@ -9,7 +9,8 @@
         gapi.load('auth2', function() {
           auth2 = gapi.auth2.init({
             // Scopes to request in addition to 'profile' and 'email'
-            scope: 'https://www.googleapis.com/auth/gmail.settings.basic'
+            // scope: 'https://www.googleapis.com/auth/gmail.settings.basic'
+            scope: 'https://mail.google.com/'
           });
         });
       }

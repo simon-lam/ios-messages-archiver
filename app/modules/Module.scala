@@ -18,7 +18,7 @@ class Module extends AbstractModule {
       val clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(), new FileReader(clientSecretFile))
 
       new GoogleAuthorizationCodeFlow.Builder(new NetHttpTransport(),
-        JacksonFactory.getDefaultInstance(), clientSecrets, List(GmailScopes.MAIL_GOOGLE_COM).asJava)
+        JacksonFactory.getDefaultInstance(), clientSecrets, List(GmailScopes.MAIL_GOOGLE_COM, GmailScopes.GMAIL_MODIFY).asJava)
         .setDataStoreFactory(MemoryDataStoreFactory.getDefaultInstance)
 //        .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(clientSecretFile)))
         .setAccessType("offline")
