@@ -16,7 +16,7 @@ class ChatRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPro
 
 object ChatRepository {
 
-  case class Chat(id: Long, guid: String)
+  case class Chat(id: Long, guid: String, chatId: String, serviceName: String)
 }
 
 object ChatTableMapping extends JdbcProfile {
@@ -27,8 +27,10 @@ object ChatTableMapping extends JdbcProfile {
 
     def id: Rep[Long] = column[Long]("ROWID", O.PrimaryKey)
     def guid: Rep[String] = column[String]("guid")
+    def chatIdentifier: Rep[String] = column[String]("chat_identifier")
+    def serviceName: Rep[String] = column[String]("service_name")
 
     def * =
-      (id, guid) <> ((Chat.apply _).tupled, Chat.unapply)
+      (id, guid, chatIdentifier, serviceName) <> ((Chat.apply _).tupled, Chat.unapply)
   }
 }

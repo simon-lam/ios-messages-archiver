@@ -3,7 +3,7 @@ package repository
 import javax.inject.Inject
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import repository.ChatMessageJoinRepository.ChatMessageJoin
-import repository.ChatMessageJoinTableMapping.ChatMessageJoinTable
+import repository.ChatMessageRecordJoinTableMapping.ChatMessageJoinTable
 import slick.jdbc.JdbcProfile
 
 class ChatMessageJoinRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends
@@ -19,7 +19,7 @@ object ChatMessageJoinRepository {
   case class ChatMessageJoin(chatId: Long, messageId: Long)
 }
 
-object ChatMessageJoinTableMapping extends JdbcProfile {
+object ChatMessageRecordJoinTableMapping extends JdbcProfile {
 
   import api._
 

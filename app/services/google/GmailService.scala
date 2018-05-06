@@ -1,4 +1,4 @@
-package services
+package services.google
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow
 import com.google.api.client.http.javanet.NetHttpTransport
@@ -7,7 +7,8 @@ import com.google.api.services.gmail.Gmail
 import com.google.api.services.gmail.model.Message
 import javax.inject.Inject
 import org.slf4j.LoggerFactory
-import services.GmailService.MissingGoogleCredentials
+import services.google.GmailService.MissingGoogleCredentials
+
 import scala.collection.JavaConverters._
 
 class GmailService @Inject()(flow: GoogleAuthorizationCodeFlow) {
