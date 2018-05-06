@@ -1,8 +1,6 @@
 package controllers
 
 import javax.inject._
-import org.webjars.play.WebJarsUtil
-import play.api._
 import play.api.mvc._
 
 /**
