@@ -1,17 +1,18 @@
-package repository
+package repositories
 
-import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.{LocalDateTime, ZoneId, ZoneOffset, ZonedDateTime}
 
 import javax.inject.Inject
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
-import repository.ChatHandleJoinRepository.ChatHandleJoin
-import repository.ChatHandleJoinTableMapping.ChatHandleJoinTable
-import repository.ChatMessageJoinRepository.ChatMessageJoin
-import repository.ChatMessageRecordJoinTableMapping.ChatMessageJoinTable
-import repository.ChatTableMapping.ChatTable
-import repository.HandleTableMapping.HandleTable
-import repository.MessageRepository.RawMessage
-import repository.MessageTableMapping.MessageTable
+import repositories.ChatHandleJoinRepository.ChatHandleJoin
+import repositories.ChatHandleJoinTableMapping.ChatHandleJoinTable
+import repositories.ChatMessageJoinRepository.ChatMessageJoin
+import repositories.ChatMessageRecordJoinTableMapping.ChatMessageJoinTable
+import repositories.ChatTableMapping.ChatTable
+import repositories.HandleTableMapping.HandleTable
+import repositories.MessageRepository.RawMessage
+import repositories.MessageTableMapping.MessageTable
 import slick.jdbc.JdbcProfile
 
 class MessageRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends
@@ -44,7 +45,13 @@ object MessageRepository {
                         isFromMe: Boolean,
                         handleId: Long) {
 
-    def date = LocalDateTime.now()
+    private val macEpoch = LocalDateTime.parse("2001-01-01T00:00:00")
+
+    def date: LocalDateTime = {
+      val zdt = macEpoch.plusSeconds(_date).atZone(ZoneId.of("UTC"))
+      val dtf = DateTimeFormatter.ofPattern("YYYY-MM-dd'T'HH:mm:ss.SSS").withZone(ZoneId.of("America/Chicago"))
+      LocalDateTime.parse(zdt.format(dtf))
+    }
   }
 }
 

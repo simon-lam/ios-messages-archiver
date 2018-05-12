@@ -1,9 +1,9 @@
-package repository
+package repositories
 
 import javax.inject.Inject
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
-import repository.ChatHandleJoinRepository.ChatHandleJoin
-import repository.ChatHandleJoinTableMapping.ChatHandleJoinTable
+import repositories.ChatHandleJoinRepository.ChatHandleJoin
+import repositories.ChatHandleJoinTableMapping.ChatHandleJoinTable
 import slick.jdbc.JdbcProfile
 
 class ChatHandleJoinRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends

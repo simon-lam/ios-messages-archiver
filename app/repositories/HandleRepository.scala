@@ -1,9 +1,9 @@
-package repository
+package repositories
 
 import javax.inject.Inject
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
-import repository.HandleRepository.Handle
-import repository.HandleTableMapping.HandleTable
+import repositories.HandleRepository.Handle
+import repositories.HandleTableMapping.HandleTable
 import slick.jdbc.JdbcProfile
 
 class HandleRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends

@@ -6,7 +6,7 @@ import akka.stream.scaladsl.Source
 import javax.inject.Inject
 import models.Message
 import org.slf4j.LoggerFactory
-import repository.MessageRepository
+import repositories.MessageRepository
 
 class MessageService @Inject()(messageRepository: MessageRepository)
                               (implicit actorSystem: ActorSystem) {
